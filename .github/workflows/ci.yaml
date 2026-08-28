@@ -8,6 +8,18 @@ jobs:
         steps:
            - name: Checkout code
              uses: actions/checkout@v4
+           - name: Setup jave 17
+             uses: actions/setup-java@v4
+             with:
+                java-version: '17'
+                distribution: 'temurin'
+           - name: Check java version
+             run: java -version
+           - name: Check maven version
+             run: mvn -version
+           - name: Run maven tests
+             working-directory: backend
+             run: mvn test
            - name: say hello  
              run: echo "Hi from github actions!"
            - name: show current directory
