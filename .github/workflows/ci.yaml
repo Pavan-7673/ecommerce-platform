@@ -20,9 +20,6 @@ jobs:
            - name: Run maven tests
              working-directory: backend
              run: mvn test
-           - name: say hello  
-             run: echo "Hi from github actions!"
-           - name: show current directory
-             run: pwd
-           - name: List files
-             run: ls -la
+           - name: Build Application
+             working-directory: backend
+             run: mvn package
