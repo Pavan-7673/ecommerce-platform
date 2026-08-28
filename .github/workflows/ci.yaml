@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
            - name: Checkout code
-             run: actions/checkout@v4
+             uses: actions/checkout@v4
            - name: say hello  
              run: echo "Hi from github actions!"
            - name: show current directory
