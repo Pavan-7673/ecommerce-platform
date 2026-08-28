@@ -23,3 +23,6 @@ jobs:
            - name: Build Application
              working-directory: backend
              run: mvn package
+           - name: Build docker image
+             working-directory: backend
+             run: docker build -t ecommerce-platform:latest .
