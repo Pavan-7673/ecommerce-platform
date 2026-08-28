@@ -1,0 +1,14 @@
+on:
+push:
+branches:
+ -main
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- name: say hello
+run: echo "hello from github actions!"
+- name: show current directory
+run: pwd
+- name: List files
+run: ls -la
