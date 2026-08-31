@@ -2,6 +2,9 @@ on:
     push:
         branches:
             - main
+permissions:
+    contents: read
+    id-token: write
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -34,3 +37,10 @@ jobs:
            - name: Push docker image
              working-directory: backend
              run: docker push ${{secrets.DOCKER_USERNAME}}/ecommerce-platform:${{github.sha}}
+           - name: Configure AWS credentials
+             uses: aws-actions/configure-aws-credentials@v4
+             with:
+                role-to-assume: arn:aws:iam::542697646801:role/GitHubActions-EKS-Role
+                aws-region: ap-south-1
+           - name: Verify aws identity
+             run: aws sts get-caller-identity
